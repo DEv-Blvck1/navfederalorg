@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="150" height="150" viewBox="0 0 150 150">
+  <defs>
+    <clipPath id="clip-tw-cc-business_1">
+      <rect width="150" height="150"/>
+    </clipPath>
+  </defs>
+  <g id="tw-cc-business_1" data-name="tw-cc-business – 1" clip-path="url(#clip-tw-cc-business_1)">
+    <g id="Group_16" data-name="Group 16" transform="translate(-4204.708 763.463)">
+      <g id="Group_10740" data-name="Group 10740" transform="translate(4218 -733)">
+        <g id="Group_10698" data-name="Group 10698" transform="translate(0 0)">
+          <g id="Group_10696" data-name="Group 10696" transform="translate(9.602 10.461)">
+            <path id="Path_288" data-name="Path 288" d="M75.833,118.593H27.092a5.712,5.712,0,0,1-5.712-5.722h0V45.852a5.712,5.712,0,0,1,5.712-5.712H76.35" transform="translate(-21.38 -40.111)" fill="#064f76"/>
+            <path id="Path_289" data-name="Path 289" d="M76.37,40.11H131.2a5.712,5.712,0,0,1,5.7,5.742h0V112.8a5.712,5.712,0,0,1-5.7,5.722H76.37" transform="translate(-22.765 -40.11)" fill="#00234b"/>
+          </g>
+          <rect id="Rectangle_1037" data-name="Rectangle 1037" width="114.063" height="9.904" transform="translate(9.485 22.247)" fill="#064f76"/>
+          <path id="Path_288-2" data-name="Path 288-2" d="M68.664,107.872H17.515a5.849,5.849,0,0,1-5.985-5.751h0V35.1a5.849,5.849,0,0,1,5.985-5.722H69.181" transform="translate(-11.53 -29.378)" fill="#00af9a"/>
+          <path id="Path_289-2" data-name="Path 289-2" d="M70.676,29.38h51.041A5.537,5.537,0,0,1,127.04,35.1h0v66.96a5.537,5.537,0,0,1-5.322,5.722h0l-51.578.078" transform="translate(-13.006 -29.378)" fill="#008c95"/>
+          <g id="Group_10697" data-name="Group 10697" transform="translate(85.491 55.547)">
+            <circle id="Ellipse_573" data-name="Ellipse 573" cx="6.629" cy="6.629" r="6.629" transform="translate(0 0)" fill="#00af9a"/>
+            <circle id="Ellipse_574" data-name="Ellipse 574" cx="6.629" cy="6.629" r="6.629" transform="translate(8.764 0)" fill="#00af9a" opacity="0.54"/>
+          </g>
+          <rect id="Rectangle_4648" data-name="Rectangle 4648" width="20.471" height="15.168" rx="2.13" transform="translate(13.394 30.231)" fill="#008c95"/>
+          <line id="Line_894" data-name="Line 894" x2="59.054" transform="translate(41.829 33.769)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="5"/>
+          <line id="Line_895" data-name="Line 895" x2="40.162" transform="translate(41.829 41.86)" fill="none" stroke="#fff" stroke-miterlimit="10" stroke-width="5"/>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

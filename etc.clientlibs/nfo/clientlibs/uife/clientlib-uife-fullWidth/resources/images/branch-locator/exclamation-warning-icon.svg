@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="38" height="27" viewBox="0 0 38 27">
+    <g data-name="Group 40586">
+        <g data-name="Group 40555">
+            <g data-name="Group 40545" style="opacity:.25">
+                <g data-name="Group 40544">
+                    <g data-name="Group 42385">
+                        <path data-name="Path 19123" d="M9.7 30.313a6 6 0 1 1-8.423 1.018A6 6 0 0 1 9.7 30.313" transform="translate(0 -18.035)" style="fill:#71b9f8"/>
+                    </g>
+                </g>
+            </g>
+            <g data-name="Group 40548" style="opacity:.5">
+                <g data-name="Group 40547">
+                    <g data-name="Group 42386" style="opacity:.3">
+                        <path data-name="Path 19124" d="M9.338 6.78a4 4 0 1 1-5.616.679 4 4 0 0 1 5.616-.679" transform="translate(-.87 -4.928)" style="fill:#37bbd3"/>
+                    </g>
+                </g>
+            </g>
+            <g data-name="Group 40551">
+                <g data-name="Group 40550" style="opacity:.2">
+                    <g data-name="Group 42384">
+                        <path data-name="Path 19125" d="M52.084 1.918a9 9 0 1 1-12.635 1.528 9 9 0 0 1 12.635-1.528" transform="translate(-17.531 4)" style="fill:#38bbd3"/>
+                    </g>
+                </g>
+            </g>
+            <circle data-name="Ellipse 1993" cx="1" cy="1" r="1" transform="translate(30)" style="opacity:.6;fill:#71b9f8"/>
+            <circle data-name="Ellipse 1994" cx="1" cy="1" r="1" transform="translate(8 24.999)" style="opacity:.6;fill:#37bbd3"/>
+        </g>
+    </g>
+    <g data-name="Group 42381">
+        <g data-name="Group 42382">
+            <path data-name="Path 42413" d="M11 0a11 11 0 1 0 11 11A11 11 0 0 0 11 0m1.316 5.5-.43 7.243H10.3L9.873 5.5zm-1.223 11.247a1.467 1.467 0 0 1-1.469-1.465v-.048a1.47 1.47 0 1 1 1.468 1.512" transform="translate(7 1.999)" style="fill:#6e8aa6"/>
+        </g>
+    </g>
+</svg>

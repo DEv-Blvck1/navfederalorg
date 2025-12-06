@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="96" height="96" viewBox="0 0 96 96">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_8798" data-name="Rectangle 8798" width="76.115" height="56" fill="none"/>
+    </clipPath>
+    <clipPath id="clip-credit-cards">
+      <rect width="96" height="96"/>
+    </clipPath>
+  </defs>
+  <g id="credit-cards" clip-path="url(#clip-credit-cards)">
+    <g id="Group_41458" data-name="Group 41458" transform="translate(10 20)">
+      <g id="Group_41457" data-name="Group 41457" clip-path="url(#clip-path)">
+        <path id="Path_43744" data-name="Path 43744" d="M70.558,0H17.672a5.647,5.647,0,0,0-5.557,5.719V12H6a6.008,6.008,0,0,0-6,6V50a6.007,6.007,0,0,0,6,6H58a6.007,6.007,0,0,0,6-6V44.737h6.558a5.647,5.647,0,0,0,5.557-5.719V5.719A5.647,5.647,0,0,0,70.558,0M60,50a2,2,0,0,1-2,2H6a2,2,0,0,1-2-2V18a2,2,0,0,1,2-2H58a2,2,0,0,1,2,2ZM72.115,39.018a1.645,1.645,0,0,1-1.557,1.719H64V18a6.008,6.008,0,0,0-6-6H16.115V5.719A1.645,1.645,0,0,1,17.672,4H70.558a1.645,1.645,0,0,1,1.557,1.719Z" fill="#0f3d70"/>
+        <path id="Path_43745" data-name="Path 43745" d="M10,40H22a2,2,0,0,0,2-2V30a2,2,0,0,0-2-2H10a2,2,0,0,0-2,2v8a2,2,0,0,0,2,2m2-8h8v4H12Z" fill="#ed780f"/>
+        <path id="Path_43746" data-name="Path 43746" d="M34,44H10a2,2,0,0,0,0,4H34a2,2,0,0,0,0-4" fill="#0f3d70"/>
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+    <g transform="translate(-88 -880)">
+        <circle data-name="Ellipse 2056" cx="12" cy="12" r="12" transform="translate(88 880)" style="fill:#fecdce"/>
+        <g data-name="Group 41939">
+            <path d="M11.673 5.529h-1.229V1.843A1.845 1.845 0 0 0 8.6 0H3.686a1.845 1.845 0 0 0-1.843 1.843v3.686H.614A.614.614 0 0 0 0 6.143v7.372a.614.614 0 0 0 .614.614h11.059a.614.614 0 0 0 .614-.614V6.143a.614.614 0 0 0-.614-.614M6.758 10v1.717H5.529V10a1.1 1.1 0 1 1 1.229 0m2.457-4.471H3.072V1.843a.615.615 0 0 1 .614-.614H8.6a.615.615 0 0 1 .614.614z" transform="translate(94 885)" style="fill:#1a1718" data-name="Group 41941"/>
+        </g>
+    </g>
+</svg>

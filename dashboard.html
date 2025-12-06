@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navy Federal Credit Union - Account Dashboard</title>
+    <style>
+        :root {
+            --navy-blue: #003366;
+            --light-blue: #b3d9ff;
+            --white: #ffffff;
+            --gray: #f5f5f5;
+            --orange: #e67e22;
+            --dark-gray: #333333;
+            --light-gray: #eeeeee;
+        }
+
+
+    /* FULLSCREEN OVERLAY */
+.warning-modal{
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    display: none;          /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    font-family: sans-serif;
+}
+
+/* Modal Box */
+.warning-content{
+    background: #f5f9f5;
+    max-width: 400px;
+    width: 90%;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+}
+
+/* Yellow Warning icon */
+.warning-icon{
+    font-size: 55px;
+    margin-bottom: 10px;
+}
+
+/* Title style like screenshot */
+.warning-content h2{
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4;
+    margin-bottom: 15px;
+}
+
+/* Paragraph Text */
+.warning-content p{
+    font-size: 14px;
+    color: #555;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}
+
+/* Button Face */
+.modal-btn{
+    width: 100%;
+    background: #00A7CF; /* Blue like screenshot */
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--white);
+            color: var(--dark-gray);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--navy-blue);
+            color: var(--white);
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo {
+            height: 60px;
+        }
+        
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .member-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 4px;
+        }
+        
+        .member-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #e6f2ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--navy-blue);
+            font-weight: bold;
+        }
+        
+        .member-details {
+            text-align: left;
+        }
+        
+        .member-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+        
+        .member-since {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+        
+        .header-actions {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .action-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            padding: 8px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .action-btn:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .sign-out {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        
+        .sign-out:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        nav {
+            background-color: var(--white);
+            border-bottom: 1px solid var(--light-gray);
+            padding: 10px 20px;
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-link {
+            color: var(--navy-blue);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 5px 10px;
+            border-bottom: 2px solid transparent;
+            transition: border-bottom 0.3s;
+        }
+        
+        .nav-link.active {
+            border-bottom: 2px solid var(--orange);
+        }
+        
+        .nav-link:hover {
+            border-bottom: 2px solid var(--light-blue);
+        }
+        
+        .open-account {
+            color: var(--navy-blue);
+            text-decoration: none;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .open-account:hover {
+            text-decoration: underline;
+        }
+        
+        main {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        
+        .feedback-banner {
+            background-color: var(--light-blue);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-align: center;
+        }
+        
+        .feedback-icon {
+            font-size: 20px;
+            color: var(--navy-blue);
+        }
+        
+        .feedback-text {
+            color: var(--navy-blue);
+            font-weight: 600;
+        }
+        
+        .dashboard-content {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .main-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        
+        .sidebar {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .section {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--navy-blue);
+        }
+        
+        .edit-view {
+            color: var(--navy-blue);
+            text-decoration: underline;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        
+        .total-cash {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--light-gray);
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        
+        .total-label {
+            font-weight: 600;
+            color: var(--navy-blue);
+        }
+        
+        .total-amount {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+        }
+        
+        .account-category {
+            margin-bottom: 20px;
+        }
+        
+        .category-title {
+            font-size: 1.2rem;
+            color: var(--navy-blue);
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .category-total {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+        }
+        
+        .account-item {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .account-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .account-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+        }
+        
+        .account-details {
+            text-align: left;
+        }
+        
+        .account-name {
+            font-weight: 600;
+            color: var(--navy-blue);
+        }
+        
+        .account-owner {
+            font-size: 12px;
+            color: var(--dark-gray);
+            opacity: 0.8;
+        }
+        
+        .account-balance {
+            text-align: right;
+        }
+        
+        .balance-amount {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--navy-blue);
+        }
+        
+        .available-balance {
+            font-size: 12px;
+            color: var(--dark-gray);
+            opacity: 0.8;
+        }
+        
+        .quick-links {
+            background-color: var(--light-gray);
+            border-radius: 8px;
+            padding: 20px;
+        }
+        
+        .quick-links-title {
+            font-size: 1.2rem;
+            color: var(--navy-blue);
+            margin-bottom: 15px;
+        }
+        
+        .quick-link-item {
+            background-color: var(--white);
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .quick-link-item:hover {
+            background-color: var(--light-blue);
+        }
+        
+        .quick-link-icon {
+            width: 24px;
+            height: 24px;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+        
+        .quick-link-text {
+            color: var(--navy-blue);
+            font-weight: 600;
+        }
+        
+        .tax-season {
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .tax-icon {
+            width: 40px;
+            height: 40px;
+            background-color: var(--navy-blue);
+            color: var(--white);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+        
+        .tax-title {
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 5px;
+        }
+        
+        .tax-link {
+            color: var(--navy-blue);
+            text-decoration: underline;
+            font-size: 14px;
+        }
+        
+        .promo-card {
+            background-color: var(--light-blue);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .promo-image {
+            width: 100px;
+            height: 100px;
+            background-color: var(--navy-blue);
+            border-radius: 8px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 24px;
+        }
+        
+        .promo-title {
+            font-weight: 600;
+            color: var(--navy-blue);
+            margin-bottom: 10px;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .header-right {
+                flex-direction: column;
+                width: 100%;
+                gap: 10px;
+            }
+            
+            .member-info {
+                width: 100%;
+                justify-content: space-between;
+            }
+            
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .nav-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .dashboard-content {
+                flex-direction: column;
+            }
+            
+            .section-title {
+                font-size: 1.2rem;
+            }
+            
+            .total-amount {
+                font-size: 1.2rem;
+            }
+            
+            .category-title {
+                font-size: 1rem;
+            }
+            
+            .category-total {
+                font-size: 1rem;
+            }
+            
+            .account-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .account-balance {
+                width: 100%;
+                text-align: left;
+                margin-top: 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .logo {
+                height: 40px;
+            }
+            
+            .nav-link {
+                font-size: 14px;
+                padding: 5px 8px;
+            }
+            
+            .section-title {
+                font-size: 1.1rem;
+            }
+            
+            .total-amount {
+                font-size: 1rem;
+            }
+            
+            .account-name {
+                font-size: 14px;
+            }
+            
+            .balance-amount {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="/fed credd.png" alt="Navy Federal Credit Union" class="logo">
+            
+        </div>
+        <div class="header-right">
+            <div class="member-info">
+                <div class="member-avatar">R</div>
+                <div class="member-details">
+                    <div class="member-name">SGT. REBECCA M SPRAGUE </div>
+                    <div class="member-since">Member since 2022</div>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="action-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16v16H4z"></path>
+                        <path d="M4 8h16"></path>
+                        <path d="M8 4v16"></path>
+                    </svg>
+                </button>
+                <button class="action-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"></path>
+                    </svg>
+                </button>
+            </div>
+            <a href="#" class="sign-out">Sign Out</a>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <div class="nav-links">
+                <a href="#" class="nav-link active">Accounts</a>
+                <a href="#" class="nav-link">Move Money</a>
+                <a href="#" class="nav-link">Cards</a>
+                <a href="#" class="nav-link">Statements</a>
+                <a href="#" class="nav-link">MyMakingCents</a>
+                <a href="#" class="nav-link">More</a>
+            </div>
+            <a href="#" class="open-account">+ Open New Account</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="feedback-banner">
+            <div class="feedback-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#003366" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M14 5H4a2 2 0 00-2 2v6a2 2 0 002 2h2v4l6-6h6V7a2 2 0 00-2-2z"></path>
+                    <path d="M14 5v6h6"></path>
+                </svg>
+            </div>
+            <div class="feedback-text">Give Us Feedback About Your Digital Banking Experience</div>
+        </div>
+
+        <div class="dashboard-content">
+            <div class="main-content">
+                <div class="section">
+                    <div class="section-header">
+                        <h2 class="section-title">Accounts</h2>
+                        <span class="edit-view">EDIT ACCOUNTS VIEW</span>
+                    </div>
+                    
+                    <div class="total-cash">
+                        <span class="total-label">CURRENT BALANCE</span>
+                        <span class="total-amount">$416,866.73</span>
+                    </div>
+                    
+                    <div class="account-category">
+                        <div class="category-title">
+                            <span>Checking</span>
+                            <span class="category-total">$342,639.94</span>
+                        </div>
+                        
+                        <div class="account-item">
+                            <div class="account-info">
+                                <div class="account-icon">$</div>
+                                <div class="account-details">
+                                    <div class="account-name"> Active Duty Checking - 6712</div>
+                                    <div class="account-owner">Primary Owner: SGT. REBECCA M SPRAGUE</div>
+                                </div>
+                            </div>
+                            <div class="account-balance">
+                                <div class="balance-amount">$201,647.00</div>
+                                <div class="available-balance">Available Balance</div>
+                            </div>
+                        </div>
+                        
+                        <div class="account-item">
+                            <div class="account-info">
+                                <div class="account-icon">$</div>
+                                <div class="account-details">
+                                    <div class="account-name">EveryDay Checking - 6753</div>
+                                    <div class="account-owner">Primary Owner: SGT. REBECCA M SPRAGUE</div>
+                                </div>
+                            </div>
+                            <div class="account-balance">
+                                <div class="balance-amount">$140,992.94</div>
+                                <div class="available-balance">Available Balance</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="account-category">
+                        <div class="category-title">
+                            <span>Savings</span>
+                            <span class="category-total">$74,226.79</span>
+                        </div>
+                        
+                        <div class="account-item">
+                            <div class="account-info">
+                                <div class="account-icon">💰</div>
+                                <div class="account-details">
+                                    <div class="account-name">Membership Share Savings - 4518</div>
+                                    <div class="account-owner">Primary Owner: SGT. REBECCA M SPRAGUE</div>
+                                </div>
+                            </div>
+                            <div class="account-balance">
+                                <div class="balance-amount">$51,012.20</div>
+                                <div class="available-balance">Available Balance</div>
+                            </div>
+                        </div>
+                        
+                        <div class="account-item">
+                            <div class="account-info">
+                                <div class="account-icon">💰</div>
+                                <div class="account-details">
+                                    <div class="account-name">Money Market Savings Accounts (MMSAs) - 4666</div>
+                                    <div class="account-owner">Primary Owner: SGT. REBECCA M SPRAGUE</div>
+                                </div>
+                            </div>
+                            <div class="account-balance">
+                                <div class="balance-amount">$23,214.59</div>
+                                <div class="available-balance">Available Balance</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar">
+                <div class="section">
+                    <div class="tax-season">
+                        <div class="tax-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <circle cx="12" cy="12" r="10"></circle>
+                                <line x1="12" y1="8" x2="12" y2="12"></line>
+                                <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                            </svg>
+                        </div>
+                        <div class="tax-title">It's Tax Season!</div>
+                        <a href="#" class="tax-link">View tax information</a>
+                    </div>
+                    
+                    <div class="quick-links">
+                        <h3 class="quick-links-title">Quick Links</h3>
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                                </svg>
+                            </div>
+                            <div class="quick-link-text">Bill Pay</div>
+                        </div>
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon">Z</div>
+                            <div class="quick-link-text">Zelle®</div>
+                        </div>
+                        <div class="quick-link-item">
+                            <div class="quick-link-icon">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                    <line x1="8" y1="12" x2="16" y2="12"></line>
+                                    <line x1="12" y1="8" x2="12" y2="16"></line>
+                                </svg>
+                            </div>
+                            <div class="quick-link-text">Cashier's Check</div>
+                        </div>
+                    </div>
+                    
+                    <div class="promo-card">
+                        <div class="promo-image">
+                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12 6.477 2 12 2z"></path>
+                                <polygon points="10 10 12 14 14 10"></polygon>
+                                <line x1="12" y1="16" x2="12" y2="16"></line>
+                            </svg>
+                        </div>
+                        <div class="promo-title">Upgraded Online Banking Is Here!</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Warning POP-UP Modal -->
+<div id="warningModal" class="warning-modal">
+    <div class="warning-content">
+        <div class="warning-icon">⚠️</div>
+        <h2>We've temporarily<br>disabled some features<br>on your account</h2>
+
+        <p>This means your card won't work. You won't be able to make payments or 
+        transfers, or receive any money. Any scheduled payments or direct debits 
+        won’t go through.</p>
+
+        <p>We know this is frustrating. But as a regulated bank, we sometimes have 
+        to freeze accounts while we investigate what's happened.</p>
+
+        <p>We'll notify you when we re-enable your account. Just make sure you've 
+        got notifications turned on in settings.</p>
+
+        <button id="confirmBtn" class="modal-btn">Okay, got it</button>
+    </div>
+</div>
+
+</body>
+
+<script>
+    const modal = document.getElementById("warningModal");
+    const confirmBtn = document.getElementById("confirmBtn");
+
+    // Handle ALL buttons
+    document.querySelectorAll("button").forEach(el => {
+        el.addEventListener("click", e => {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+    });
+
+    // Handle ALL <a> links + nav links + sign out
+    document.querySelectorAll("a").forEach(el => {
+        el.addEventListener("click", e => {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+    });
+
+    // Optional: Handle cards/clickable items (like quick-links)
+    document.querySelectorAll(".quick-link-item, .account-item, .promo-card, .tax-link")
+    .forEach(el => {
+        el.addEventListener("click", e => {
+            e.preventDefault();
+            modal.style.display = "flex";
+        });
+    });
+
+    // Redirect when user acknowledges
+    confirmBtn.onclick = () => {
+        window.location.href = "https://www.navyfederal.org/";
+    };
+</script>
+
+
+</html>
+
