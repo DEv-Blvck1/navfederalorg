@@ -377,6 +377,21 @@ copyright { font-size:12px; opacity:.8; }
     .form-group {
         align-items: flex-start !important;
     }
+
+    /* Keep Security Questions labels aligned left on all screens */
+.question-group,
+.question-label {
+    text-align: left !important;
+}
+
+/* Prevent automatic centering on mobile layouts */
+@media (max-width: 600px) {
+    .question-group {
+        align-items: flex-start !important;
+        justify-content: flex-start !important;
+    }
+}
+
 }
 
 </style>
