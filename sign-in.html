@@ -365,6 +365,20 @@ copyright { font-size:12px; opacity:.8; }
     .membership-image{ max-width:100%; }
     .password-toggle.active svg{ stroke:#003366; }
 }
+
+/* Keep Username + Password labels left aligned on all screens */
+.form-group,
+.form-label {
+    text-align: left !important;
+}
+
+/* Prevent auto-centering on mobile */
+@media (max-width: 600px) {
+    .form-group {
+        align-items: flex-start !important;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -413,7 +427,11 @@ copyright { font-size:12px; opacity:.8; }
                                             <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
                                             <circle cx="12" cy="12" r="3"></circle>
                                         </svg>
+
                                     </div>
+                                    <p id="password-strength" style="margin-top:6px; font-size:14px;"></p>
+                                    <p id="caps-warning" style="color:red; font-size:13px; display:none;">⚠ Caps Lock is ON</p>
+
                                 </div>
                             </div>
                             <button type="submit" class="submit-btn">Sign In</button>
@@ -581,26 +599,109 @@ togglePassword.addEventListener("click", function () {
             
             // Login form submission
             loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const username = usernameInput.value.trim();
-                const password = passwordInput.value.trim();
-                
-                // Check credentials
-                if (username === 'Rebecca.sprague@usmc.mil' && password === 'Motherteresa2') {
-                    // Show loading state
-                    loginBox.style.display = 'none';
-                    loadingState.style.display = 'block';
-                    
-                    // Simulate loading for 3 seconds
-                    setTimeout(function() {
-                        loadingState.style.display = 'none';
-                        securityQuestions.style.display = 'block';
-                    }, 3000);
-                } else {
-                    alert('Invalid username or password. Please try again.');
-                }
-            });
+    e.preventDefault();
+
+    let username = usernameInput.value.trim().toLowerCase(); // makes input case-insensitive
+    let password = passwordInput.value.trim();
+
+    // Email format validation (RFC standard style)
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(username)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    // Stored login details converted to lowercase for comparison
+    const validEmail = "rebecca.sprague@usmc.mil".toLowerCase();
+    const validPassword = "Motherteresa2";
+
+    if (username === validEmail && password === validPassword) {
+
+        // Show loading state
+        loginBox.style.display = 'none';
+        loadingState.style.display = 'block';
+
+        // Simulate 3-second loading
+        setTimeout(function () {
+            loadingState.style.display = 'none';
+            securityQuestions.style.display = 'block';
+        }, 3000);
+
+    } else {
+        alert('Invalid username or password. Please try again.');
+    }
+});
+
+
+// ======================= PASSWORD STRENGTH CHECK ==========================
+passwordInput.addEventListener("input", function () {
+    const value = passwordInput.value;
+    const strengthText = document.getElementById("password-strength");
+
+    let strength = 0;
+    if (value.length >= 8) strength++;
+    if (/[A-Z]/.test(value)) strength++;
+    if (/[0-9]/.test(value)) strength++;
+    if (/[^A-Za-z0-9]/.test(value)) strength++; // symbols
+
+    if (strength === 0) {
+        strengthText.textContent = "";
+        strengthText.style.color = "";
+    } else if (strength === 1) {
+        strengthText.textContent = "Weak password";
+        strengthText.style.color = "red";
+    } else if (strength === 2) {
+        strengthText.textContent = "Moderate strength";
+        strengthText.style.color = "orange";
+    } else if (strength >= 3) {
+        strengthText.textContent = "Strong password";
+        strengthText.style.color = "green";
+    }
+});
+
+// ======================= CAPS-LOCK WARNING ==========================
+passwordInput.addEventListener("keydown", (event) => {
+    const capsWarning = document.getElementById("caps-warning");
+    if (event.getModifierState("CapsLock")) {
+        capsWarning.style.display = "block";
+    } else {
+        capsWarning.style.display = "none";
+    }
+});
+
+// ======================= LOGIN VALIDATION ==========================
+loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+
+    let username = usernameInput.value.trim().toLowerCase(); // Case-insensitive
+    let password = passwordInput.value.trim();
+
+    // Email validation
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailPattern.test(username)) {
+        alert("Please enter a valid email address.");
+        return;
+    }
+
+    const validEmail = "rebecca.sprague@usmc.mil".toLowerCase();
+    const validPassword = "Motherteresa2";
+
+    if (username === validEmail && password === validPassword) {
+
+        loginBox.style.display = 'none';
+        loadingState.style.display = 'block';
+
+        setTimeout(function () {
+            loadingState.style.display = 'none';
+            securityQuestions.style.display = 'block';
+        }, 3000);
+
+    } else {
+        alert('Invalid username or password. Please try again.');
+    }
+});
+
             
             // Security questions form submission
    // Security questions form submission
